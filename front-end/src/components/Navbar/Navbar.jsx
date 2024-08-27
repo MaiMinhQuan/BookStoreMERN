@@ -59,7 +59,7 @@ const Navbar = () => {
             src="https://cdn-icons-png.freepik.com/256/16649/16649456.png?ga=GA1.1.1338809600.1713531712&semt=ais_hybrid"
             alt="logo"
           >
-            <h1 className="text-2xl font-semibold">BookHeaven</h1>
+            <h1 className="text-2xl font-semibold">BookStore</h1>
           </Link>
         </div>
         <div className="nav-links-bookheaven block md:flex items-center gap-4">
