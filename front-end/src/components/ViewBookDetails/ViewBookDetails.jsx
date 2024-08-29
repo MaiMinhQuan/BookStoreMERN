@@ -52,51 +52,55 @@ const ViewBookDetails = () => {
   };
 
   const handleCart = async () => {
-    const response = await axios.put(
-      `http://localhost:8010/api/v1/add-book-to-cart`,
-      {},
-      { headers }
-    );
-    console.log("Check response add cart: ", response);
-    alert(response.data.message);
+    try {
+      const response = await axios.put(
+        `http://localhost:8010/api/v1/add-book-to-cart`,
+        {},
+        { headers }
+      );
+      // console.log("Check response add cart: ", response);
+      alert(response.data.message);
+    } catch (error) {
+      alert("Error!");
+    }
   };
 
   const handleDelete = async () => {
-    const response = await axios.delete(
-      `http://localhost:8010/api/v1/delete-book`,
-      { headers }
-    );
-    console.log("Check response delete book: ", response);
-    alert(response.data.message);
-    navigate("/all-books");
+    try {
+      const response = await axios.delete(
+        `http://localhost:8010/api/v1/delete-book`,
+        { headers }
+      );
+      console.log("Check response delete book: ", response);
+      alert(response.data.message);
+      navigate("/all-books");
+    } catch (error) {
+      alert("Error!");
+    }
   };
 
   return (
     <>
       {!Data && (
-        <div className="h-screen bg-zinc-900 flex items-center justify-center">
+        <div className="h-screen flex items-center justify-center">
           <Loader />
         </div>
       )}
       {Data && (
-        <div className="px-4 md:px-12 py-8 bg-zinc-900 flex flex-col md:flex-row gap-8">
-          <div className="w-full lg:w-3/6">
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-8 bg-zinc-800 rounded p-10">
-              <img
-                src={Data.url}
-                alt=""
-                className="h-[50vh] md:h-[60vh] lg:h-[70vh] rounded"
-              />
+        <div className="px-12 py-8 flex flex-col md:flex-row gap-8">
+          <div className="w-3/6">
+            <div className="flex flex-row items-center justify-center gap-8 rounded p-10">
+              <img src={Data.url} alt="" className="h-[70vh] rounded" />
               {isLoggedIn === true && role === "user" && (
-                <div className=" flex flex-row md:flex-col gap-4">
+                <div className="flex flex-col gap-4">
                   <button
-                    className="bg-white rounded-full text-2xl p-2 text-red-500"
+                    className="text-2xl p-2 text-red-500 hover:text-red-400"
                     onClick={handleFavorite}
                   >
                     <FaHeart />
                   </button>
                   <button
-                    className="bg-white rounded-full text-2xl p-2 text-blue-500"
+                    className="text-2xl p-2 text-blue-500 hover:text-blue-400"
                     onClick={handleCart}
                   >
                     <FaShoppingCart />
@@ -105,15 +109,15 @@ const ViewBookDetails = () => {
               )}
 
               {isLoggedIn === true && role === "admin" && (
-                <div className=" flex flex-row md:flex-col gap-4">
+                <div className=" flex flex-col gap-4">
                   <Link
                     to={`/update-book/${id}`}
-                    className="bg-white rounded-full text-2xl p-2 text-blue-500"
+                    className="text-2xl p-2 text-blue-500 hover:text-blue-400"
                   >
                     <FaRegEdit />
                   </Link>
                   <button
-                    className="bg-white rounded-full text-2xl p-2 text-red-500"
+                    className="text-3xl text-red-500 hover:text-red-400"
                     onClick={handleDelete}
                   >
                     <MdOutlineDelete />
@@ -122,16 +126,21 @@ const ViewBookDetails = () => {
               )}
             </div>
           </div>
-          <div className="p-4 w-full lg:w-3/6">
-            <h1 className="text-4xl text-zinc-300 font-semibold">
+
+          <div className="p-4 w-3/6">
+            <h1 className="text-4xl text-zinc-700 font-semibold">
               {Data.title}
             </h1>
-            <p className="text-zinc-400 mt-1">{Data.author}</p>
-            <p className="text-zinc-500 mt-4 text-xl">{Data.desc}</p>
-            <p className="flex mt-4 items-center justify-start text-zinc-400">
+
+            <p className="text-emerald-500 mt-1">{Data.author}</p>
+
+            <p className="text-zinc-600 mt-4 text-xl">{Data.desc}</p>
+
+            <p className="flex mt-4 items-center justify-start text-zinc-700">
               <GrLanguage className="me-3" /> {Data.language}
             </p>
-            <p className="text-zinc-100 mt-4 text-3xl font-semibold">
+
+            <p className="text-zinc-700 mt-4 text-3xl font-semibold">
               Price: {Data.price}$
             </p>
           </div>

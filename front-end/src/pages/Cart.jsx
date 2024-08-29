@@ -15,13 +15,17 @@ const Cart = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const response = await axios.get(
-        `http://localhost:8010/api/v1/get-book-from-cart`,
-        { headers }
-      );
+      try {
+        const response = await axios.get(
+          `http://localhost:8010/api/v1/get-book-from-cart`,
+          { headers }
+        );
 
-      if (response && response.data && response.data.data) {
-        setCart(response.data.data);
+        if (response && response.data && response.data.data) {
+          setCart(response.data.data);
+        }
+      } catch (error) {
+        alert("Error!");
       }
     };
 
@@ -38,7 +42,8 @@ const Cart = () => {
       console.log("Check response remove cart: ", response);
       alert(response.data.message);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      alert("Error!");
     }
   };
 
@@ -54,7 +59,7 @@ const Cart = () => {
 
   const placeOrder = async () => {
     try {
-      console.log("Check cart: ", Cart);
+      // console.log("Check cart: ", Cart);
       const response = await axios.post(
         `http://localhost:8010/api/v1/place-order`,
         { order: Cart },
@@ -63,22 +68,23 @@ const Cart = () => {
       alert(response.data.message);
       navigate("/profile/order-history");
     } catch (error) {
-      console.log(error);
+      alert("Error!");
+      // console.log(error);
     }
   };
 
   return (
     <>
-      <div className="bg-zinc-900 px-12 h-screen">
+      <div className="px-12 h-auto min-h-screen">
         {!Cart && (
-          <div className="h-screen bg-zinc-900 flex items-center justify-center">
+          <div className="h-screen flex items-center justify-center">
             <Loader />
           </div>
         )}
         {Cart && Cart.length === 0 && (
           <div className="h-screen">
             <div className="h-[100%] flex items-center justify-center flex-col">
-              <h1 className="text-5xl lg:text-6xl font-semibold text-zinc-400">
+              <h1 className="text-6xl font-semibold text-zinc-700">
                 Empty cart
               </h1>
             </div>
@@ -86,42 +92,36 @@ const Cart = () => {
         )}
         {Cart && Cart.length > 0 && (
           <>
-            <h1 className="text-5xl font-semibold text-zinc-500 mb-8">
+            <h1 className="text-5xl font-semibold text-zinc-700 mb-8">
               Your cart
             </h1>
             {Cart.map((item, index) => {
               return (
                 <div
-                  className="w-full my-4 rounded flex flex-col md:flex-row p-4 bg-zinc-800 justify-between items-center"
+                  className="bg-zinc-100 w-full my-4 rounded flex flex-col md:flex-row p-4 justify-between items-center "
                   key={index}
                 >
                   <img
                     src={item.url}
                     alt=""
-                    className="h-[20vh] md:h-[10vh] object-cover"
+                    className="h-[10vh] object-cover"
                   />
 
-                  <div className="w-full md:w-auto">
-                    <h1 className="text-2xl font-semibold text-zinc-100 text-start mt-2 md:mt-0">
+                  <div className="w-auto">
+                    <h1 className="text-2xl font-semibold text-zinc-700 text-start mt-2 md:mt-0">
                       {item.title}
                     </h1>
-                    <p className="text-normal text-zinc-300 mt-2 hidden lg:block">
-                      {item.desc.slice(0, 100)}...
-                    </p>
-                    <p className="text-normal text-zinc-300 mt-2 hidden md:block lg:hidden">
-                      {item.desc.slice(0, 65)}...
-                    </p>
-                    <p className="text-normal text-zinc-300 mt-2 block md:block">
+                    <p className="text-normal text-zinc-600 mt-2 block">
                       {item.desc.slice(0, 100)}...
                     </p>
                   </div>
 
-                  <div className="flex mt-4 w-full md:w-auto items-center justify-between">
-                    <h2 className="text-3xl font-semibold text-zinc-100 flex">
+                  <div className="flex mt-4 w-auto items-center justify-between">
+                    <h2 className="text-3xl font-semibold text-zinc-700 flex">
                       {item.price}$
                     </h2>
                     <button
-                      className="bg-red-100 text-red-700 border border-red-700 rounded p-2 ms-12"
+                      className="bg-red-100 text-red-700 border border-red-700 rounded p-2 ms-12 hover:text-red-500 hover:border-red-500"
                       onClick={() => removeFromCart(item._id)}
                     >
                       <AiFillDelete />
@@ -131,18 +131,18 @@ const Cart = () => {
               );
             })}
             <div className="mt-4 w-full flex items-center justify-end">
-              <div className="p-4 bg-zinc-800 rounded">
-                <h1 className="text-3x1 text-zinc-200 font-semibold">
+              <div className="bg-zinc-100 p-4 rounded">
+                <h1 className="text-3x1 text-zinc-700 font-semibold">
                   Total Amount
                 </h1>
 
-                <div className="mt-3 flex items-center justify-between text-xl text-zinc-200">
+                <div className="mt-3 flex items-center justify-between text-xl text-zinc-700">
                   <h2>{Cart.length} books</h2> <h2>$ {Total}</h2>
                 </div>
 
                 <div className="w-[100%] mt-3">
                   <button
-                    className="bg-zinc-100 rounded px-4 py-2 flex justify-center w-full font-semibold hover:bg-zinc"
+                    className="bg-emerald-400 text-white rounded px-4 py-2 flex justify-center w-full font-semibold hover:bg-emerald-300"
                     onClick={placeOrder}
                   >
                     Place your order

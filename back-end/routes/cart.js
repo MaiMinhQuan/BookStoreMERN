@@ -8,11 +8,11 @@ router.put("/add-book-to-cart", authenticateToken, async (req, res) => {
   try {
     const { bookid, id } = req.headers;
     const userData = await User.findById(id);
-    const isInCart = userData.cart.includes(bookid);
+    // const isInCart = userData.cart.includes(bookid);
 
-    if (isInCart) {
-      return res.status(200).json({ message: "Book is already in cart" });
-    }
+    // if (isInCart) {
+    //   return res.status(200).json({ message: "Book is already in cart" });
+    // }
 
     await User.findByIdAndUpdate(id, { $push: { cart: bookid } });
 

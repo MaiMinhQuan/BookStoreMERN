@@ -11,25 +11,34 @@ const UserData = ({ UserDivData, UserDiv, setUserDiv }) => {
       <div
         className={`${UserDiv} top-0 left-0 h-screen w-full flex items-center justify-center`}
       >
-        <div className="bg-zinc-900 rounded p-4 w[80%] md:w-[50%] lg:w-[40%]">
+        <div className="bg-white text-zinc-700 rounded p-4 w-[40%]">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-semibold">User Information</h1>
 
-            <button onClick={() => setUserDiv("hidden")}>
+            <button
+              className="hover:text-emerald-400"
+              onClick={() => setUserDiv("hidden")}
+            >
               <RxCross1 />
             </button>
           </div>
           <div className="mt-2">
-            <label htmlFor="">Username:&emsp;</label>
-            <span className="font-semibold">{UserDivData.username}</span>
+            <label htmlFor="" className="font-semibold">
+              Username:&emsp;
+            </label>
+            <span>{UserDivData.username}</span>
           </div>
           <div className="mt-4">
-            <label htmlFor="">Email:&emsp;</label>
-            <span className="font-semibold">{UserDivData.email}</span>
+            <label htmlFor="" className="font-semibold">
+              Email:&emsp;
+            </label>
+            <span>{UserDivData.email}</span>
           </div>
           <div className="mt-4">
-            <label htmlFor="">Address:&emsp;</label>
-            <span className="font-semibold">{UserDivData.address}</span>
+            <label htmlFor="" className="font-semibold">
+              Address:&emsp;
+            </label>
+            <span>{UserDivData.address}</span>
           </div>
         </div>
       </div>

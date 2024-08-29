@@ -36,23 +36,26 @@ const LogIn = () => {
         navigate("/profile");
       }
     } catch (error) {
+      alert("Username or password is incorrect");
       console.log("Error when log in: ", error);
     }
   };
 
   return (
-    <div className="h-[83vh] bg-zinc-900 px-12 py-8 flex items-center justify-center">
-      <div className="bg-zinc-800 rounded-lg px-8 py-5 w-full md:w-3/6 lg:w-2/6">
-        <p className="text-zinc-200 text-xl">Log In</p>
+    <div className="h-[83vh] bg-white px-12 py-8 flex items-center justify-center">
+      <div className="border border-emerald-500 rounded-lg px-8 py-5 w-2/6">
+        <p className="text-zinc-700 text-3xl text-center font-semibold">
+          Log In
+        </p>
         <div className="mt-4">
           <div>
-            <label htmlFor="" className="text-zinc-400">
+            <label htmlFor="" className="text-zinc-700">
               Username
             </label>
 
             <input
               type="text"
-              className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+              className="border border-emerald-500 w-full mt-2 text-zinc-700 p-2 outline-none"
               name="username"
               required
               value={Value.username}
@@ -61,13 +64,13 @@ const LogIn = () => {
           </div>
 
           <div className="mt-4">
-            <label htmlFor="" className="text-zinc-400">
+            <label htmlFor="" className="text-zinc-700">
               Password
             </label>
 
             <input
               type="password"
-              className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+              className="border border-emerald-500 w-full mt-2 text-zinc-700 p-2 outline-none"
               name="password"
               required
               value={Value.password}
@@ -77,7 +80,7 @@ const LogIn = () => {
 
           <div className="mt-4">
             <button
-              className="w-full bg-blue-500 text-white font-semibold py-2 rounded"
+              className="w-full bg-emerald-500 text-white font-semibold py-2 rounded hover:bg-emerald-400"
               onClick={handleSubmit}
             >
               Log in
@@ -85,11 +88,16 @@ const LogIn = () => {
           </div>
 
           <div className="mt-4">
-            <p className="flex items-center justify-center text-zinc-100 font-semibold">
+            <p className="flex items-center justify-center text-zinc-700 font-semibold">
               Don't have an account&nbsp;
-              <Link to="/login" className="hover:text-blue-500">
+              <button
+                className="hover:text-emerald-500"
+                onClick={() => {
+                  navigate("/sign-up");
+                }}
+              >
                 <u>Sign up</u>
-              </Link>
+              </button>
             </p>
           </div>
         </div>

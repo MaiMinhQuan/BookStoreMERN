@@ -19,12 +19,17 @@ const Profile = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const response = await axios.get(
-        "http://localhost:8010/api/v1/get-user-information",
-        { headers }
-      );
-      console.log("Check user info: ", response.data);
-      setProfile(response.data);
+      try {
+        const response = await axios.get(
+          "http://localhost:8010/api/v1/get-user-information",
+          { headers }
+        );
+        // console.log("Check user info: ", response.data);
+        setProfile(response.data);
+      } catch (error) {
+        alert("Error!");
+        console.log(error);
+      }
     };
     fetch();
   }, []);
@@ -32,17 +37,17 @@ const Profile = () => {
   return (
     <>
       {!Profile && (
-        <div className="h-screen bg-zinc-900 flex items-center justify-center">
+        <div className="h-screen flex items-center justify-center">
           <Loader />
         </div>
       )}
       {Profile && (
-        <div className="bg-zinc-900 px-2 md:px-12 flex flex-col md:flex-row h-auto py-8 gap-4 text-white">
-          <div className="w-full md:w-1/6">
+        <div className="px-12 flex flex-row h-auto py-8 gap-4 text-white">
+          <div className="w-1/6">
             <Sidebar data={Profile} />
           </div>
 
-          <div className="w-full md:w-5/6">
+          <div className="w-5/6">
             <Outlet />
           </div>
         </div>

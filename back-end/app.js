@@ -12,6 +12,7 @@ const app = express();
 mongoose.connect(process.env.DB_CONNECT, (e) =>
   console.log("Error connecting to DB: " + e)
 );
+
 app.use(cors());
 app.use(express.json());
 
@@ -22,9 +23,7 @@ app.use("/api/v1", favorite);
 app.use("/api/v1", cart);
 app.use("/api/v1", order);
 
-app.get("/", (req, res) => {
-  res.send("Hello from backend123456846");
-});
+
 
 //create port
 app.listen(process.env.PORT, () =>

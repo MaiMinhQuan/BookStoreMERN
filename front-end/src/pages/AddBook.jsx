@@ -56,17 +56,16 @@ const AddBook = () => {
   };
   return (
     <div className="h-[100%] p-0 md:p-4">
-      <h1 className="text-3xl md:text-5xl font-semibold text-zinc-500 mb-8">
-        Add Book
-      </h1>
-      <div className="p-4 bg-zinc-800 rounded">
+      <h1 className="text-5xl font-semibold text-zinc-700 mb-8">Add Book</h1>
+
+      <div className="border border-emerald-500 p-4 rounded">
         <div>
-          <label htmlFor="" className="text-zinc-400">
+          <label htmlFor="" className="text-zinc-900">
             Image URL
           </label>
           <input
             type="text"
-            className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+            className="border border-emerald-500 w-full mt-2 text-zinc-900 p-2 outline-none"
             name="url"
             required
             value={Data.url}
@@ -74,12 +73,12 @@ const AddBook = () => {
           />
         </div>
         <div className="mt-4">
-          <label htmlFor="" className="text-zinc-400">
+          <label htmlFor="" className="text-zinc-900">
             Title of book
           </label>
           <input
             type="text"
-            className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+            className="border border-emerald-500 w-full mt-2 text-zinc-900 p-2 outline-none"
             name="title"
             required
             value={Data.title}
@@ -87,12 +86,12 @@ const AddBook = () => {
           />
         </div>
         <div className="mt-4">
-          <label htmlFor="" className="text-zinc-400">
+          <label htmlFor="" className="text-zinc-900">
             Author of book
           </label>
           <input
             type="text"
-            className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+            className="border border-emerald-500 w-full mt-2 text-zinc-900 p-2 outline-none"
             name="author"
             required
             value={Data.author}
@@ -100,12 +99,12 @@ const AddBook = () => {
           />
         </div>
         <div className="mt-4">
-          <label htmlFor="" className="text-zinc-400">
+          <label htmlFor="" className="text-zinc-900">
             Language
           </label>
           <input
             type="text"
-            className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+            className="border border-emerald-500 w-full mt-2 text-zinc-900 p-2 outline-none"
             name="language"
             required
             value={Data.language}
@@ -113,12 +112,12 @@ const AddBook = () => {
           />
         </div>
         <div className="mt-4">
-          <label htmlFor="" className="text-zinc-400">
+          <label htmlFor="" className="text-zinc-900">
             Price
           </label>
           <input
             type="text"
-            className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+            className="border border-emerald-500 w-full mt-2 text-zinc-900 p-2 outline-none"
             name="price"
             required
             value={Data.price}
@@ -127,12 +126,12 @@ const AddBook = () => {
         </div>
 
         <div className="mt-4">
-          <label htmlFor="" className="text-zinc-400">
+          <label htmlFor="" className="text-zinc-900">
             Description
           </label>
           <textarea
             type="text"
-            className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+            className="border border-emerald-500 w-full mt-2 text-zinc-900 p-2 outline-none"
             name="desc"
             required
             value={Data.desc}
@@ -141,7 +140,7 @@ const AddBook = () => {
         </div>
 
         <button
-          className="mt-4 px-3 bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition-all duration-300"
+          className="mt-4 px-3 bg-emerald-500 text-white font-semibold py-2 rounded hover:bg-emerald-400 transition-all duration-300"
           onClick={handleSubmit}
         >
           Add book
