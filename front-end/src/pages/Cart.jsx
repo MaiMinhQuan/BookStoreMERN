@@ -17,7 +17,7 @@ const Cart = () => {
     const fetch = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8010/api/v1/get-book-from-cart`,
+          `http://localhost:8010/api/get-book-from-cart`,
           { headers }
         );
 
@@ -35,7 +35,7 @@ const Cart = () => {
   const removeFromCart = async (bookid) => {
     try {
       const response = await axios.put(
-        `http://localhost:8010/api/v1/remove-book-from-cart/${bookid}`,
+        `http://localhost:8010/api/remove-book-from-cart/${bookid}`,
         {},
         { headers }
       );
@@ -59,9 +59,8 @@ const Cart = () => {
 
   const placeOrder = async () => {
     try {
-      // console.log("Check cart: ", Cart);
       const response = await axios.post(
-        `http://localhost:8010/api/v1/place-order`,
+        `http://localhost:8010/api/place-order`,
         { order: Cart },
         { headers }
       );
@@ -98,7 +97,7 @@ const Cart = () => {
             {Cart.map((item, index) => {
               return (
                 <div
-                  className="bg-zinc-100 w-full my-4 rounded flex flex-col md:flex-row p-4 justify-between items-center "
+                  className="bg-zinc-100 w-full my-4 rounded flex flex-row p-4 justify-between items-center "
                   key={index}
                 >
                   <img
@@ -116,7 +115,7 @@ const Cart = () => {
                     </p>
                   </div>
 
-                  <div className="flex mt-4 w-auto items-center justify-between">
+                  <div className="mt-4 w-auto flex items-center justify-between">
                     <h2 className="text-3xl font-semibold text-zinc-700 flex">
                       {item.price}$
                     </h2>

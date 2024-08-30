@@ -49,7 +49,7 @@ router.post("/sign-up", async (req, res) => {
       message: "Signup successfully",
     });
   } catch (error) {
-    return res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Error from server" });
   }
 });
 
@@ -81,7 +81,7 @@ router.post("/log-in", async (req, res) => {
       token: token,
     });
   } catch (error) {
-    return res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Error from server" });
   }
 });
 
@@ -91,7 +91,7 @@ router.get("/get-user-information", authenticateToken, async (req, res) => {
     const data = await User.findById(id).select("-password");
     return res.status(200).json(data);
   } catch (error) {
-    return res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Error from server" });
   }
 });
 
@@ -102,7 +102,7 @@ router.put("/update-address", authenticateToken, async (req, res) => {
     await User.findByIdAndUpdate(id, { address: address });
     return res.status(200).json({ message: "Update address successfully" });
   } catch (error) {
-    return res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Error from server" });
   }
 });
 

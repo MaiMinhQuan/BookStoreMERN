@@ -12,17 +12,15 @@ const Sidebar = ({ data }) => {
   });
 
   return (
-    <div className="bg-emerald-400 p-4 rounded flex flex-col items-center justify-between h-[80vh]">
+    <div className="h-[80vh] bg-emerald-400 p-4 rounded flex flex-col items-center justify-between">
       <div className="flex flex-col items-center justify-center">
         <img src={data.avatar} alt="" className="h-[12vh]" />
 
-        <p className="mt-1 text-normal text-zinc-100 font-semibold">
-          {data.username}
-        </p>
+        <p className="mt-1 text-zinc-100 font-semibold">{data.username}</p>
 
-        <p className="mt-1 text-normal text-zinc-100">{data.email}</p>
+        <p className="mt-1 text-zinc-100">{data.email}</p>
 
-        <div className="w-full mt-4 h-[1px] bg-zinc-100 hidden lg:block"></div>
+        <div className="w-full mt-4 h-[1px] bg-zinc-100 block"></div>
       </div>
 
       {role === "user" && (
@@ -66,7 +64,7 @@ const Sidebar = ({ data }) => {
       )}
 
       <button
-        className="gb-zinc-900 w-full mt-4 text-white font-semibold flex items-center justify-center py-2 rounded hover:bg-white hover:text-zinc-900 transition-all duration-300"
+        className="w-full mt-4 text-zinc-100 font-semibold flex items-center justify-center py-2 rounded hover:bg-white hover:text-zinc-900 transition-all duration-300"
         onClick={() => {
           dispatch(authActions.logout());
           dispatch(authActions.changeRole("user"));

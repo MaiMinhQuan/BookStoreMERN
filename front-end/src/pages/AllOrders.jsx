@@ -8,11 +8,11 @@ import { FiInfo } from "react-icons/fi";
 import UserData from "./UserData.jsx";
 
 const AllOrders = () => {
-  const [OrderHistory, setOrderHistory] = useState();
-  const [Option, setOption] = useState(-1);
-  const [Value, setValue] = useState({ status: "" });
-  const [UserDiv, setUserDiv] = useState("hidden");
-  const [UserDivData, setUserDivData] = useState();
+  const [OrderHistory, setOrderHistory] = useState(); //order data
+  const [Option, setOption] = useState(-1); //chọn order
+  const [Value, setValue] = useState({ status: "" }); //status của order đang được chọn
+  const [UserDiv, setUserDiv] = useState("hidden"); //hiện thông tin người đặt
+  const [UserDivData, setUserDivData] = useState(); //thông tin người đặt
   const headers = {
     auth: localStorage.getItem("token"),
     id: localStorage.getItem("id"),
@@ -22,7 +22,7 @@ const AllOrders = () => {
     const fetch = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8010/api/v1/get-all-order`,
+          `http://localhost:8010/api/get-all-order`,
           { headers }
         );
 
@@ -41,11 +41,10 @@ const AllOrders = () => {
     const id = OrderHistory[i]._id;
     try {
       const response = await axios.put(
-        `http://localhost:8010/api/v1/update-order-status/${id}`,
+        `http://localhost:8010/api/update-order-status/${id}`,
         Value,
         { headers }
       );
-      // console.log("Check data change status:", response);
       alert(response.data.message);
     } catch (error) {
       alert("Error!");
@@ -63,7 +62,7 @@ const AllOrders = () => {
         {OrderHistory && OrderHistory.length === 0 && (
           <div className="h-screen">
             <div className="h-[100%] flex items-center justify-center flex-col">
-              <h1 className="text-5xl lg:text-6xl font-semibold text-zinc-700">
+              <h1 className="text-6xl font-semibold text-zinc-700">
                 No Order History
               </h1>
             </div>
@@ -104,7 +103,7 @@ const AllOrders = () => {
             {OrderHistory.map((item, index) => {
               return (
                 <div
-                  className="text-zinc-900 w-full rounded  py-2 px-4 flex gap-4 hover:bg-zinc-100 hover:cursor-pointer"
+                  className="text-zinc-900 w-full rounded py-2 px-4 flex gap-4 hover:bg-zinc-100 hover:cursor-pointer"
                   key={index}
                 >
                   {item && item.book && (
@@ -115,7 +114,7 @@ const AllOrders = () => {
 
                       <div className="w-[22%]">
                         <Link
-                          className="hover:text-blue-300"
+                          className="hover:text-emerald-400"
                           to={`/view-book-details/${item.book._id}`}
                         >
                           {item.book.title}

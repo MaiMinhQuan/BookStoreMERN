@@ -9,7 +9,7 @@ const AllBooks = () => {
     const fetch = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8010/api/v1/get-all-books"
+          "http://localhost:8010/api/get-all-books"
         );
         // console.log("Check response: ", response);
 

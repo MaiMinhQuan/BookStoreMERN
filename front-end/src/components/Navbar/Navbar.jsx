@@ -51,22 +51,11 @@ const Navbar = () => {
     links.splice(4, 1);
   }
 
-  const [MobileNav, setMobileNav] = useState("hidden");
-
   return (
     <>
-      <nav className="z-50 relative flex bg-emerald-400 text-white px-8 py-4 items-center justify-between">
+      <nav className="z-50 relative bg-emerald-400 text-white px-8 py-4 flex items-center justify-between">
         <div className="flex item-center">
-<<<<<<< HEAD
           <Link to={"/"} className="h-10 me-4" alt="logo">
-=======
-          <Link
-            to={"/"}
-            className="h-10 me-4"
-            src="https://cdn-icons-png.freepik.com/256/16649/16649456.png?ga=GA1.1.1338809600.1713531712&semt=ais_hybrid"
-            alt="logo"
-          >
->>>>>>> 3958f272a44957e7d8669bd80d0a8c684b7f3c7c
             <h1 className="text-2xl font-semibold">BookStore</h1>
           </Link>
         </div>

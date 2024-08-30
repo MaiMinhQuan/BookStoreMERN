@@ -13,6 +13,7 @@ const UpdateBook = () => {
     price: "",
     desc: "",
     language: "",
+    genre: "",
   });
 
   const headers = {
@@ -25,7 +26,7 @@ const UpdateBook = () => {
     const fetch = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8010/api/v1/get-book-by-id/${id}`
+          `http://localhost:8010/api/get-book-by-id/${id}`
         );
         console.log("Check response: ", response.data.data);
 
@@ -54,12 +55,13 @@ const UpdateBook = () => {
         Data.author === "" ||
         Data.price === "" ||
         Data.desc === "" ||
-        Data.language === ""
+        Data.language === "" ||
+        Data.genre === ""
       ) {
         alert("All fields are required");
       } else {
         const response = await axios.put(
-          "http://localhost:8010/api/v1/update-book",
+          "http://localhost:8010/api/update-book",
           Data,
           { headers }
         );
@@ -71,6 +73,7 @@ const UpdateBook = () => {
           price: "",
           desc: "",
           language: "",
+          genre: "",
         });
         alert(response.data.message);
         navigate(`/view-book-details/${id}`);
@@ -136,6 +139,21 @@ const UpdateBook = () => {
             onChange={handleOnChangeData}
           />
         </div>
+        <div className="mt-4">
+          <label htmlFor="" className="text-zinc-900">
+            Genre
+          </label>
+          <input
+            type="text"
+            className="border border-emerald-500 w-full mt-2 text-zinc-900 p-2 outline-none"
+            placeholder="Fantasy, Science Fiction, Action & Adventure, Romance, Horror"
+            name="genre"
+            required
+            value={Data.genre}
+            onChange={handleOnChangeData}
+          />
+        </div>
+
         <div className="mt-4">
           <label htmlFor="" className="text-zinc-900">
             Price

@@ -21,7 +21,7 @@ const Profile = () => {
     const fetch = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8010/api/v1/get-user-information",
+          "http://localhost:8010/api/get-user-information",
           { headers }
         );
         // console.log("Check user info: ", response.data);

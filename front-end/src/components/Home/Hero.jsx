@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <div className="h-[75vh] flex flex-col md:flex-row items-center justify-center">
+    <div className="h-[75vh] flex flex-row">
       <div className="w-3/6 flex flex-col items-start justify-center">
-        <h1 className="text-6xl font-semibold text-emerald-500 text-left drop-shadow-2xl">
+        <h1 className="text-6xl font-semibold text-emerald-500 drop-shadow-2xl">
           Discover Endless Source Of Knowledge
         </h1>
 
-        <p className="mt-4 text-xl text-zinc-700 text-left">
+        <p className="mt-4 text-xl text-zinc-700">
           "A book is a garden, an orchard, a storehouse, a party, a company by
           the way, a counselor, a multitude of counselors." – Charles Baudelaire
         </p>

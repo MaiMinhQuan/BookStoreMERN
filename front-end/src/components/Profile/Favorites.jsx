@@ -15,7 +15,7 @@ const Favorites = () => {
     const fetch = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8010/api/v1/get-favorite-book`,
+          `http://localhost:8010/api/get-favorite-book`,
           { headers }
         );
         // console.log("Check response favorite: ", response);

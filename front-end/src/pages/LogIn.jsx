@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { authActions } from "../store/auth.js";
 import { useDispatch } from "react-redux";
 
@@ -23,7 +23,7 @@ const LogIn = () => {
         alert("All fields are required");
       } else {
         const response = await axios.post(
-          "http://localhost:8010/api/v1/log-in",
+          "http://localhost:8010/api/log-in",
           Value
         );
         // console.log("Check data when log in: ", response);
@@ -42,8 +42,8 @@ const LogIn = () => {
   };
 
   return (
-    <div className="h-[83vh] bg-white px-12 py-8 flex items-center justify-center">
-      <div className="border border-emerald-500 rounded-lg px-8 py-5 w-2/6">
+    <div className="h-[83vh] px-12 py-8 flex items-center justify-center">
+      <div className="w-2/6 border border-emerald-500 rounded-lg px-8 py-5 ">
         <p className="text-zinc-700 text-3xl text-center font-semibold">
           Log In
         </p>

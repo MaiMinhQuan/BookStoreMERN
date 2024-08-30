@@ -23,7 +23,7 @@ const ViewBookDetails = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        `http://localhost:8010/api/v1/get-book-by-id/${id}`
+        `http://localhost:8010/api/get-book-by-id/${id}`
       );
       console.log("Check response: ", response.data.data);
 
@@ -43,7 +43,7 @@ const ViewBookDetails = () => {
 
   const handleFavorite = async () => {
     const response = await axios.put(
-      `http://localhost:8010/api/v1/add-book-to-favorite`,
+      `http://localhost:8010/api/add-book-to-favorite`,
       {},
       { headers }
     );
@@ -54,7 +54,7 @@ const ViewBookDetails = () => {
   const handleCart = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:8010/api/v1/add-book-to-cart`,
+        `http://localhost:8010/api/add-book-to-cart`,
         {},
         { headers }
       );
@@ -68,7 +68,7 @@ const ViewBookDetails = () => {
   const handleDelete = async () => {
     try {
       const response = await axios.delete(
-        `http://localhost:8010/api/v1/delete-book`,
+        `http://localhost:8010/api/delete-book`,
         { headers }
       );
       console.log("Check response delete book: ", response);
@@ -134,13 +134,17 @@ const ViewBookDetails = () => {
 
             <p className="text-emerald-500 mt-1">{Data.author}</p>
 
-            <p className="text-zinc-600 mt-4 text-xl">{Data.desc}</p>
+            <p className="text-zinc-600 mt-5 text-xl">{Data.desc}</p>
 
-            <p className="flex mt-4 items-center justify-start text-zinc-700">
+            <p className="text-emerald-500 mt-5 text-xl">
+              Genre: <span className="text-zinc-600">{Data.genre}</span>{" "}
+            </p>
+
+            <p className="flex mt-5 items-center justify-start text-zinc-700">
               <GrLanguage className="me-3" /> {Data.language}
             </p>
 
-            <p className="text-zinc-700 mt-4 text-3xl font-semibold">
+            <p className="text-zinc-700 mt-5 text-3xl font-semibold">
               Price: {Data.price}$
             </p>
           </div>

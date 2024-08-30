@@ -11,11 +11,11 @@ const BookCard = ({ data, favorite }) => {
 
   const handleRemoveFromFavorite = async () => {
     const response = await axios.put(
-      `http://localhost:8010/api/v1/remove-book-from-favorite`,
+      `http://localhost:8010/api/remove-book-from-favorite`,
       {},
       { headers }
     );
-    console.log("Check response remove favorite: ", response);
+    // console.log("Check response remove favorite: ", response);
     alert(response.data.message);
   };
 

@@ -9,6 +9,7 @@ const AddBook = () => {
     price: "",
     desc: "",
     language: "",
+    genre: "",
   });
 
   const headers = {
@@ -19,7 +20,6 @@ const AddBook = () => {
   const handleOnChangeData = (event) => {
     const { name, value } = event.target;
     setData({ ...Data, [name]: value });
-    console.log("Check data add book:", Data);
   };
 
   const handleSubmit = async () => {
@@ -30,12 +30,13 @@ const AddBook = () => {
         Data.author === "" ||
         Data.price === "" ||
         Data.desc === "" ||
-        Data.language === ""
+        Data.language === "" ||
+        Data.genre === ""
       ) {
         alert("All fields are required");
       } else {
         const response = await axios.post(
-          "http://localhost:8010/api/v1/add-book",
+          "http://localhost:8010/api/add-book",
           Data,
           { headers }
         );
@@ -47,6 +48,7 @@ const AddBook = () => {
           price: "",
           desc: "",
           language: "",
+          genre: "",
         });
         alert(response.data.message);
       }
@@ -108,6 +110,20 @@ const AddBook = () => {
             name="language"
             required
             value={Data.language}
+            onChange={handleOnChangeData}
+          />
+        </div>
+        <div className="mt-4">
+          <label htmlFor="" className="text-zinc-900">
+            Genre
+          </label>
+          <input
+            type="text"
+            className="border border-emerald-500 w-full mt-2 text-zinc-900 p-2 outline-none"
+            placeholder="Fantasy, Science Fiction, Action & Adventure, Romance, Horror"
+            name="genre"
+            required
+            value={Data.genre}
             onChange={handleOnChangeData}
           />
         </div>

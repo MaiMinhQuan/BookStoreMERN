@@ -9,7 +9,7 @@ const RecentlyAdded = () => {
     const fetch = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8010/api/v1/get-recent-books"
+          "http://localhost:8010/api/get-recent-books"
         );
         // console.log("Check response: ", response);
 

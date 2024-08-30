@@ -20,7 +20,7 @@ router.put("/add-book-to-favorite", authenticateToken, async (req, res) => {
       .status(200)
       .json({ message: "Add book to favorites successfully" });
   } catch (error) {
-    return res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Error from server" });
   }
 });
 
@@ -42,7 +42,7 @@ router.put(
         .status(200)
         .json({ message: "Remove book from favorites successfully" });
     } catch (error) {
-      return res.status(500).json({ message: "Internal server error" });
+      return res.status(500).json({ message: "Error from server" });
     }
   }
 );
@@ -55,7 +55,7 @@ router.get("/get-favorite-book", authenticateToken, async (req, res) => {
 
     return res.status(200).json({ status: "Success", data: favoriteBooks });
   } catch (error) {
-    return res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Error from server" });
   }
 });
 

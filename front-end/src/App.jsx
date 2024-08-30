@@ -17,6 +17,7 @@ import Settings from "./components/Profile/Settings.jsx";
 import AllOrders from "./pages/AllOrders.jsx";
 import AddBook from "./pages/AddBook.jsx";
 import UpdateBook from "./pages/UpdateBook.jsx";
+import AllBooksv2 from "./pages/AllBooksv2.jsx";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -40,7 +41,8 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" exact="true" element={<Home />} />
-        <Route path="/all-books" element={<AllBooks />} />
+        {/* <Route path="/all-books" element={<AllBooks />} /> */}
+        <Route path="/all-books" element={<AllBooksv2 />} />
         <Route path="/log-in" element={<LogIn />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/cart" element={<Cart />} />

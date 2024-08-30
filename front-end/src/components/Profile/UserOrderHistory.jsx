@@ -15,7 +15,7 @@ const UserOrderHistory = () => {
     const fetch = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8010/api/v1/get-order-history`,
+          `http://localhost:8010/api/get-order-history`,
           { headers }
         );
 
@@ -29,7 +29,7 @@ const UserOrderHistory = () => {
 
     fetch();
   }, []);
-  console.log("Check order history: ", OrderHistory);
+
   return (
     <>
       <div className="px-12 h-auto min-h-screen">
@@ -55,7 +55,7 @@ const UserOrderHistory = () => {
               </h1>
             </div>
 
-            <div className="text-black font-semibold mt-4 w-full rounded py-2 px-4 flex gap-2 ">
+            <div className="text-zinc-900 font-semibold mt-4 w-full rounded py-2 px-4 flex gap-2 ">
               <div className="w-[3%]">
                 <h1 className="text-center">No</h1>
               </div>
@@ -118,7 +118,7 @@ const UserOrderHistory = () => {
                         </h1>
                       </div>
 
-                      <div className="w-[5%] hidden md:block">
+                      <div className="w-[5%] block">
                         <h1 className="text-sm text-zinc-900">COD</h1>
                       </div>
                     </>

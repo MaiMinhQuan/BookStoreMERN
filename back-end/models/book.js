@@ -22,10 +22,19 @@ const book = mongoose.Schema(
       type: String,
       required: true,
     },
-
     language: {
       type: String,
       required: true,
+    },
+    genre: {
+      type: String,
+      enum: [
+        "Fantasy",
+        "Science Fiction",
+        "Action & Adventure",
+        "Romance",
+        "Horror",
+      ],
     },
   },
   { timestamps: true }

@@ -14,7 +14,7 @@ const Settings = () => {
     const fetch = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8010/api/v1/get-user-information`,
+          `http://localhost:8010/api/get-user-information`,
           { headers }
         );
 
@@ -36,7 +36,7 @@ const Settings = () => {
   const handleSubmitAddress = async () => {
     try {
       const response = await axios.put(
-        "http://localhost:8010/api/v1/update-address",
+        "http://localhost:8010/api/update-address",
         Value,
         { headers }
       );
@@ -96,9 +96,9 @@ const Settings = () => {
             />
           </div>
 
-          <div className="mt-4 flex justify-end ">
+          <div className="mt-4 flex justify-end">
             <button
-              className="bg-emerald-400 text-zinc-100 font-semibold px-3 py-2 rounded hover:bg-emerald-500 transition-all duration-300"
+              className="bg-emerald-500 text-zinc-100 font-semibold px-3 py-2 rounded hover:bg-emerald-400 transition-all duration-300"
               onClick={handleSubmitAddress}
             >
               Update

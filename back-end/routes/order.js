@@ -32,7 +32,7 @@ router.post("/place-order", authenticateToken, async (req, res) => {
       message: "Place order successfully",
     });
   } catch (error) {
-    return res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Error from server" });
   }
 });
 
@@ -52,7 +52,7 @@ router.get("/get-order-history", authenticateToken, async (req, res) => {
       data: orderData,
     });
   } catch (error) {
-    return res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Error from server" });
   }
 });
 
@@ -72,7 +72,7 @@ router.get("/get-all-order", authenticateToken, async (req, res) => {
       data: userData,
     });
   } catch (error) {
-    return res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Error from server" });
   }
 });
 
@@ -87,7 +87,7 @@ router.put("/update-order-status/:id", authenticateToken, async (req, res) => {
       message: "Update order status successfully",
     });
   } catch (error) {
-    return res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Error from server" });
   }
 });
 
